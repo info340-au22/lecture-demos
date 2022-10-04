@@ -1,0 +1,18 @@
+# update lecture code
+1. git checkout main # make sure you're on main
+2. git pull # download new starter code
+3. git checkout section-a # go to the section branch
+4. git merge main # merge in the new starter code
+5. code!
+
+# to use github pages
+1. # do your coding on main
+2. git checkout gh-pages
+3. git merge main
+4. git push # publish to github
+5. git checkout main
+6. go back to step 1
+
+
+
+

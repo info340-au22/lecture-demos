@@ -1,0 +1,22 @@
+h1 {
+    font-family: 'Helvetica';
+    color: white;
+    background-color: #333;
+}
+
+h2 {
+    color: rebeccapurple;
+}
+
+p {
+    color: #333;
+}
+
+.bio {
+    font-size: 1.2rem;
+}
+
+/* elements with class="bio" */
+.bio-section {
+    background-color: #eee;
+}
