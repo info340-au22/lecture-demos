@@ -1,0 +1,23 @@
+h1 {
+    font-family: 'Helvetica';
+    color: white;
+    background-color: #333; /*dark gray*/    
+}
+
+h2 {
+    color: rebeccapurple;
+}
+
+p {
+    color: #333;
+    font-family: 'Papyrus';
+}
+
+/* class="bio" */
+/* .bio {
+    background-color: palegoldenrod;
+} */
+
+.about-section {
+    background-color: palegoldenrod;
+}
