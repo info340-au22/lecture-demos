@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
   <header>
     <h1>Joel Ross</h1>
   </header>
@@ -18,20 +17,49 @@
 
     <section class="about">
       <h2>About Me</h2>
-      <p>Hello! My name is Joel Ross, and I'm an Associate Teaching Professor at the University of Washington Information School. I teaches courses in web development, mobile application development, software architecture, and introductory programming.</p>
-
+      <p>Hello! My name is Joel Ross, and I'm an <span class="sparkly">Associate</span> Teaching Professor at the University of Washington Information School. I teaches courses in web development, mobile application development, software architecture, and introductory programming.</p>
+      <p class="highlight">I love special punctuation! The emdash&mdash;is awesome</p>
       <p>
-        <img src="https://assets.ischool.uw.edu/ai/joelross/pci/joelross-200x-1.jpg" alt="Joel Ross head picture">
+        <a href="https://ischool.uw.edu">
+          <img src="https://assets.ischool.uw.edu/ai/joelross/pci/joelross-200x-1.jpg" alt="Joel Ross head picture">
+        </a>
       </p>  
     </section>
     
     <section class="links">
       <h2>Some links</h2>
       <p>Link to the <a href="https://ischool.uw.edu">iSchool Homepage</a></p>
-      <p>My INFO 340 <a href="https://info340.github.io/" aria-label="info 340 course textbook">INFO 340 textbook</a></p>
+      <p>My INFO 340 <a href="https://info340.github.io/" class="highlight" aria-label="info 340 course textbook">INFO 340 textbook</a></p>
       <p>My <a href="https://www.safaribooksonline.com/library/view/-/9780135159071/?ar" aria-la>INFO 201 textbook</a></p>
       <p>Also visit <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">this video</a></p>
     </section>
+
+    <section>
+      <h2>Contact Form</h2>
+      <form>
+        <p>
+          <label for="name-input">Name:</label> 
+          <input id="name-input" type="text" name="username">
+        </p>
+        <p>
+          <label for="email-input">Email:</label>
+          <input id="email-input" type="email" name="useremail">
+        </p>
+        <p>
+          <!-- for the unclear -->
+          <label for="password">Password:</label>
+          <input id="password" type="password" name="password">
+        </p>
+        <p>
+          <label for="comment-text">Comment:</label> 
+          <textarea id="comment-text"></textarea>
+        </p>
+        <p><button type="submit">Submit</button></p>
+      </form>
+
+
+    </section>
+
   </main>
 
 </body>

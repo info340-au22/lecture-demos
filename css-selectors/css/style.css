@@ -8,9 +8,47 @@ h2 {
     color: rebeccapurple;
 }
 
+h1, h2 {
+    font-size: 3rem;
+}
+
+.sparkly:hover {
+    font-size: 3rem;
+}
+
 p {
     color: #333;
 }
+
+.sparkly {
+    color: pink;
+}
+
+p.highlight {
+    background-color: yellow;
+}
+
+.alert.success {
+    font-size: 1.5rem;
+    color: green;
+}
+
+h2, a.highlight {
+
+}
+
+.about h2 {
+    background-color: goldenrod;
+}
+
+.links > a {
+    background-color: blanchedalmond;
+}
+
+.tabset .tab {
+
+}
+
 
 /* elements with class="about" */
 .about {
