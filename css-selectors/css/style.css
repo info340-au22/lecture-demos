@@ -16,3 +16,33 @@ p {
 .about {
     background-color: #eee;
 }
+
+/* .highlight {
+    font-size: 120%;
+}
+
+.highlight, h2 {
+    font-size: 120%;
+} */
+
+p .highlight {
+    background-color: yellow;
+}
+
+.about img {
+
+}
+
+.about p {
+    font-family: "Papyrus";
+}
+
+.links > a {
+    background-color: blanchedalmond;
+}
+
+img:hover {
+    width: 300px;
+}
+
+
