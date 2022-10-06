@@ -1,7 +1,7 @@
 h1 {
     font-family: 'Helvetica';
     color: white;
-    background-color: #333;
+    background-color: #333; /*dark gray*/    
 }
 
 h2 {
@@ -10,13 +10,14 @@ h2 {
 
 p {
     color: #333;
+    font-family: 'Papyrus';
 }
 
-.bio {
-    font-size: 1.2rem;
-}
+/* class="bio" */
+/* .bio {
+    background-color: palegoldenrod;
+} */
 
-/* elements with class="bio" */
-.bio-section {
-    background-color: #eee;
+.about-section {
+    background-color: palegoldenrod;
 }
