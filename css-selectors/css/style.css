@@ -1,0 +1,18 @@
+h1 {
+    font-family: 'Helvetica';
+    color: white;
+    background-color: #333;
+}
+
+h2 {
+    color: rebeccapurple;
+}
+
+p {
+    color: #333;
+}
+
+/* elements with class="about" */
+.about {
+    background-color: #eee;
+}
