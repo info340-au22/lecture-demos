@@ -1,10 +1,14 @@
 /* general styling */
 h1, h2, h3 {
-    font-family: 'Helvetica';
+    font-family: 'Noto Sans Ethiopic', 'Montserrat', sans-serif;
 }
 
 h2 {
     color: rebeccapurple;
+}
+
+.sparkly {
+    color: pink;
 }
 
 
@@ -18,21 +22,82 @@ nav a {
     color: white;
 }
 
+nav li {
+    display: inline-block;
+    /* width: 200px;
+    height: 75px; */
+    border: 1px solid white;
+    margin: 10px;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+}
+
 
 /* about section */
 .about {
     background-color: #f8f8f8;
+    /* padding: 1em 0;
+    border: 3px dotted rebeccapurple;
+    border-bottom: 5px solid rebeccapurple;
+    border-top-width: 8px; */
+    flex-basis: 30%;
+    order: 2;
+    margin-left: 2em;
+}
+
+.about img {
+    height: 200px;
 }
 
 
 /* course cards */
 .courses .card {
     border: 1px solid black;
+    margin: .25em;
 }
 
 .courses img {
     max-width: 150px;
 }
+
+.courses .card:last-child {
+    border-bottom: 5px solid black;
+    flex-grow: 0;
+}
+
+.courses .card:nth-child(2n) {
+    background-color: aliceblue;
+}
+
+/* is the flexbox */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+
+.courses .card {
+    /* where it lives in its pool */
+    flex-basis: 300px;
+    flex-grow: 1;
+
+    /* also be your own pool */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.courses .card.android {
+    flex-grow: 0;
+}
+
+.courses .card h3 {
+    text-align: center;
+}
+
 
 /* other */
 footer {
