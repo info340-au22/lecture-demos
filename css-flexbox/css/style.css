@@ -1,7 +1,12 @@
 /* general styling */
 h1, h2, h3 {
-    font-family: 'Helvetica';
+    /* font-family: 'Obscura', 'Helvetica Prime', 'Arial', sans-serif; */
+    font-family: 'Montserrat', sans-serif;    
 }
+
+/* header {
+    background-image: url('../img/joelross-200x.jpg');
+} */
 
 h2 {
     color: rebeccapurple;
@@ -16,18 +21,82 @@ nav {
 
 nav a {
     color: white;
+
 }
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+nav li {
+    display: inline;
+}
+
+/* main columns */
+main {
+    display: flex;
+}
+
+.about {
+    flex-basis: 30%;
+    order: 2;
+}
+
 
 
 /* about section */
 .about {
     background-color: #f8f8f8;
+    margin-left: 2em;
+    /* padding: 2em 0; */
+    /* border: 3px dotted rebeccapurple;
+    border-bottom: 3px solid rebeccapurple; */
 }
 
+.about img {
+    display: block;
+}
 
 /* course cards */
 .courses .card {
     border: 1px solid black;
+    margin: .5em;
+}
+
+/* this is the flexbox */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+}
+
+/* flex items */
+.card-container .card {
+    flex: 1 0 300px; /* shortcut property: grow, shrink, basis */
+    /* flex-grow: 1; */
+}
+
+.card-container .card:last-child {
+    flex-grow: 0;
+}
+
+.courses .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.courses .card h3 {
+    text-align: center;
+}
+
+
+
+
+.courses .card:nth-child(2n) {
+    background-color: aliceblue;
 }
 
 .courses img {
@@ -38,3 +107,4 @@ nav a {
 footer {
     font-size: smaller;
 }
+
