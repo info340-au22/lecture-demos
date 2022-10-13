@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+/* general styling */
+h1, h2, h3 {
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
+}
+
+h2 {
+    color: rebeccapurple;
+}
+
+
+/* nav bar */
+nav {
+    color: white;
+    background-color: #4b2e83;
+}
+
+nav a {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+nav li {
+    display: inline;
+}
+
+/* main columns */
+/* the flexbox */
+main {
+    display: flex;
+}
+
+.about {
+    flex-basis: 30%;
+    order: 2;
+    background-color: #f8f8f8;
+    margin-left: 2em;
+}
+
+.courses {
+    flex-grow: 1;
+}
+
+/* course cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.courses .card {
+    flex: 0 0 300px; /* shortcut property: grow, shrink, basis */
+    border: 1px solid black;
+    padding: .5em;
+    margin: .5em;
+    /* is also a flexbox itself! */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-container .card:last-child {
+    flex-grow: 0;
+}
+ 
+
+.courses img {
+    max-width: 150px;
+}
+
+/* other */
+footer {
+    font-size: smaller;
+}
