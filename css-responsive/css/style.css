@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+body, ul {
+    margin: 0;
+}
+
+body {
+    background-color: greenyellow;
+}
+
 /* general styling */
 h1, h2, h3 {
     font-family: 'Montserrat', 'Helvetica', sans-serif;
@@ -36,14 +44,13 @@ nav li {
 /* main columns */
 /* the flexbox */
 main {
-    display: flex;
+    /* display: flex; */
 }
 
 .about {
     flex-basis: 30%;
     order: 2;
     background-color: #f8f8f8;
-    margin-left: 2em;
 }
 
 .courses {
@@ -64,6 +71,7 @@ main {
     /* is also a flexbox itself! */
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -74,9 +82,53 @@ main {
 
 .courses img {
     max-width: 150px;
+    display: none;
 }
+
 
 /* other */
 footer {
     font-size: smaller;
+}
+
+/* breakpoints:  */
+
+/* if device width is >= 768px */
+@media (min-width: 768px) {
+
+    /* normal rule! */
+    body {
+        background-color: lightskyblue;
+    }
+
+    .courses .card {
+        background-color: white;
+    }
+
+    .courses img {
+        display: block;
+    }
+
+    main {
+        display: flex;
+    }
+
+    .about {
+        margin-left: 2em;
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        background-color: lightcoral;
+    }
+
+    .card img {
+        max-width: 300px;
+    }
+
+    .courses .card {
+        flex-basis: 40%;
+    }
+
 }
