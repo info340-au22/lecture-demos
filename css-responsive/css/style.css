@@ -11,6 +11,13 @@ h2 {
     color: rebeccapurple;
 }
 
+body, ul {
+    margin: 0;
+}
+
+body {
+    background-color: lightgreen;
+}
 
 /* nav bar */
 nav {
@@ -36,35 +43,41 @@ nav li {
 /* main columns */
 /* the flexbox */
 main {
-    display: flex;
+    /* display: flex; */
 }
 
 .about {
     flex-basis: 30%;
     order: 2;
     background-color: #f8f8f8;
-    margin-left: 2em;
+    /* margin-left: 2em; */
 }
 
 .courses {
+    flex: 1 0 30%;
+    /* flex-basis: 30%;
     flex-grow: 1;
+    flex-shrink: 0; */
 }
 
 /* course cards */
 .card-container {
     display: flex;
     flex-wrap: wrap;
+    /* justify-content: space-around; */
 }
 
 .courses .card {
-    flex: 0 0 300px; /* shortcut property: grow, shrink, basis */
+    /* shortcut property: grow, shrink, basis */
+    flex: 0 0 300px; 
     border: 1px solid black;
     padding: .5em;
-    margin: .5em;
+    margin: 1em;
     /* is also a flexbox itself! */
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .card-container .card:last-child {
@@ -74,9 +87,52 @@ main {
 
 .courses img {
     max-width: 150px;
+    display: none;
 }
 
 /* other */
 footer {
     font-size: smaller;
+}
+
+/* breakpoints
+    xsmall 576px
+    small 768px
+    medium 992px
+    large 1200px
+    xlarge 1400px
+
+ */
+
+/* if screen >= 768px */
+@media (min-width: 768px) {
+
+    body {
+        background-color: lightskyblue;
+    }
+
+    .courses .card {
+        background-color: white;
+    }
+
+    main {
+        display: flex;
+    }
+
+    .about {
+        margin-left: 2rem;
+    }
+
+    .courses img {
+        display: block;
+    }
+
+
+}
+
+/* really big */
+@media (min-width: 1200px) {
+    body {
+        background-color: darksalmon;
+    };
 }
