@@ -1,0 +1,11 @@
+/* body {
+ font-family: 'Times New Roman', Times, serif;   
+} */
+
+.card-container div {
+    flex-direction: column;
+}
+
+header {
+    background-color: rebeccapurple;
+}

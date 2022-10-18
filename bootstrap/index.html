@@ -7,31 +7,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Joel Ross">
   <title>Demo: Joel's Home Page (Bootstrap)</title>
-
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-  <nav>
+
+  <nav class="navbar navbar-expand-sm bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav-links">
+        <ul class="navbar-nav mb-2 mb-lg-0 justify-content-between">
+          <li class="nav-item"><a href="#">Teaching</a></li>
+          <li class="nav-item"><a href="#">Research</a></li>
+          <li class="nav-item"><a href="https://info340.github.io/">Client Side Web Development</a></li>
+          <li class="nav-item"><a href="https://www.safaribooksonline.com/library/view/-/9780135159071/?ar">Programming Skills for Data Science</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- <nav>
     <ul>
-      <li><a href="https://ischool.uw.edu">iSchool</a></li>
+      <li></li>
       <li><a href="#">Teaching</a></li>
       <li><a href="#">Research</a></li>
       <li><a href="https://info340.github.io/">Client Side Web Development</a></li>
       <li><a href="https://www.safaribooksonline.com/library/view/-/9780135159071/?ar">Programming Skills for Data Science</a></li>
     </ul>
-  </nav>
+  </nav> -->
 
-  <header>
-    <h1>Joel Ross</h1>
-    <p>University of Washington iSchool</p>
-    <p>
-      <a href="http://getbootstrap.com/">Built with Bootstrap</a>
-    </p>
-
+  <header class="text-light py-5">
+    <div class="container">
+      <h1>Joel Ross</h1>
+      <p>University of Washington iSchool</p>
+      <p>
+        <a class="btn btn-success d-none d-md-inline d-lg-none" href="http://getbootstrap.com/">Built with Bootstrap</a>
+      </p>
+    </div>
   </header>
 
-  <main>
+  <main class="container">
 
     <section>
       <h2>About Me</h2>
@@ -44,31 +66,37 @@
 
     <section>
       <h2>Courses I Teach</h2>
+
       <p>
-        <button>Hide All</button>
+        <button 
+          class="btn btn-outline-primary"
+          data-bs-toggle="collapse"
+          data-bs-target="#class-cards"
+        >Hide All</button>
       </p>
-      <div>
-        <div>
+
+      <div id="class-cards" class="collapse row">
+        <div class="col-12 col-md-6 col-lg-4">
           <img src="img/chrome-logo-150w.png" alt="chrome browser logo">
           <h3>INFO 340: Client Side Development</h3>
         </div>
 
-        <div>
+        <div class="col-12 col-md-6 col-lg-4">
           <img src="img/rlogo-150w.png" alt="r language logo">
           <h3>INFO 201: Foundational Skills for Data Science </h3>
         </div>
 
-        <div>
+        <div class="col-6 col-lg-4">
           <img src="img/rockefeller-avatar-150w.png" alt="lego model of rockefeller center">
           <h3>INFO 443: Software Architecture</h3>
         </div>
 
-        <div>
+        <div class="col-6 col-lg-4">
           <img src="img/android-icon-150w.png" alt="android droid icon">
           <h3>INFO 448: Android Development</h3>
         </div>
 
-        <div>
+        <div class="col-3">
           <img src="img/python-logo-150w.png" alt="python language logo">
           <h3>LIS 511: Introduction to Programming</h3>
         </div>
@@ -78,17 +106,17 @@
     <section>
       <h2>Contact Form</h2>
       <form>
-        <div>
-          <label for="name-input">Name:</label> 
-          <input id="name-input" type="text" name="username">
+        <div class="input-group">
+          <label class="input-group-text" for="name-input">Name:</label> 
+          <input class="form-control" id="name-input" type="text" name="username">
         </div>
         <div>
-          <label for="email-input">Email:</label>
-          <input id="email-input" type="email" name="useremail">
+          <label class="form-label" for="email-input">Email:</label>
+          <input class="form-control" id="email-input" type="email" name="useremail">
         </div>
         <div>
-          <label for="comment-text">Comment:</label> 
-          <textarea id="comment-text"></textarea>
+          <label class="form-label" for="comment-text">Comment:</label> 
+          <textarea class="form-control" id="comment-text"></textarea>
         </div>
         <div>
           <button type="submit">Submit</button>
