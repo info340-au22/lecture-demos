@@ -8,6 +8,16 @@ h2 {
     color: rebeccapurple;
 }
 
+
+div.parent {
+    font-size: 20px;
+}
+
+.parent p {
+    font-size: 2em;
+}
+
+
 p {
     color: #333;
     font-family: 'Papyrus';
