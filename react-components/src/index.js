@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import App from './components/App.js';
+
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-//create an element using JSX
-const reactElem = <h1>Hello React!</h1>
-
+// const titleMsg = "Hello Inline";
+// const imgPath = "img/joelross-200x.jpg";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(reactElem);
+root.render(<App />);
