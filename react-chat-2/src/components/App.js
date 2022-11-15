@@ -1,12 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { HeaderBar } from './HeaderBar.js';
 import { ChannelList } from './ChannelNav.js';
 import { ChatPane } from './ChatPane.js';
 import { ComposeForm } from './ComposeForm';
 
+import CHAT_HISTORY from '../data/chat_log.json';
+
 //A component!
 export default function App(props) {
+
+  const [chatMessages, setChatMessages] = useState(CHAT_HISTORY);
+
+  const addMessage = (text) => {
+    const newMessage = {
+      "userId": "penguin",
+      "userName": "Penguin",
+      "userImg": "/img/Penguin.png",
+      "text": text,
+      "timestamp": Date.now(),
+      "channel": "general"
+    } 
+
+    const updateChatMessages = [...chatMessages, newMessage];
+    setChatMessages(updateChatMessages); //update state and re-render
+  }
+
 
   const channelList = [
     'general', 'random', 'dank-memes', 'channel-4', 'pet-pictures'
@@ -22,8 +41,11 @@ export default function App(props) {
           <ChannelList channels={channelList} currentChannel={currentChannel} />
         </div>
         <div className="col d-flex flex-column">
-          <ChatPane currentChannel={currentChannel} />
-          <ComposeForm />
+          <ChatPane 
+            currentChannel={currentChannel} 
+            chatMessages={chatMessages}
+            />
+          <ComposeForm addMessageCallback={addMessage} />
         </div>
       </div>
     </div>

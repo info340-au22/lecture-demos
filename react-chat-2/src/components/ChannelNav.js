@@ -7,14 +7,14 @@ export function ChannelList(props) {
 
   const linkElemArray = channels.map((channelNameString) => {
 
-    let classList = "btn btn-outline-light my-1";
+    let classList = "btn btn-sm btn-outline-light my-1";
     if(channelNameString === currentChannel) {
-      classList = "btn btn-warning"
+      classList = "btn btn-sm btn-warning"
     }
 
     const element = (
       <div key={channelNameString}>
-        <button className={classList} href="">{channelNameString}</button>
+        <button className={classList}>{channelNameString}</button>
       </div>
     )
     return element;
