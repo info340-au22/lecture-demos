@@ -38,13 +38,16 @@ export function ChatPane(props) {
 
 function MessageItem(props) {
   const {userName, userImg, text} = props.messageData;
+  // console.log("rendering", text);
 
   //state
   const [isLiked, setIsLiked] = useState(false);
 
   const handleClick = (event) => {
     console.log("you liked "+userName+"'s post!");
-    setIsLiked(!isLiked); //toggle
+    setIsLiked(!isLiked); //toggle -- change the value in RAM
+    //RE-RENDERS 
+  
   }
 
   //RENDERING
@@ -61,9 +64,9 @@ function MessageItem(props) {
       <div className="flex-grow-1">
         <p className="user-name">{userName}</p>
         <p>{text}</p>
-        <button className="btn like-button" onClick={handleClick}>
-          <span className="material-icons" style={{ color: heartColor }}>favorite_border</span>
-        </button>
+          <button className="btn like-button" onClick={handleClick}>
+            <span className="material-icons" style={{ color: heartColor }}>favorite_border</span>
+          </button>
       </div>
     </div>
   )
