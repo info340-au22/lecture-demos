@@ -39,12 +39,16 @@ export function ChatPane(props) {
 function MessageItem(props) {
   const {userName, userImg, text} = props.messageData;
 
+  // console.log("rendering", text);
+
   //state
   const [isLiked, setIsLiked] = useState(false);
 
   const handleClick = (event) => {
     console.log("you liked "+userName+"'s post!");
     setIsLiked(!isLiked); //toggle
+    //changes the value in RAM over there
+    //and RE-RENDERS
   }
 
   //RENDERING
