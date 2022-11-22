@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { Routes, Route, Outlet } from 'react-router-dom';
+
 import { HeaderBar } from './HeaderBar.js';
 
 import ChatPage from './ChatPage';
@@ -23,12 +25,37 @@ export default function App(props) {
     <div className="container-fluid d-flex flex-column">
       <HeaderBar currentUser={currentUser} />
 
-      <ChatPage currentUser={currentUser} />
-      {/* <SignInPage currentUser={currentUser} loginCallback={loginUser} /> */}
-      {/* <Static.WelcomePage /> */}
-      {/* <Static.AboutPage /> */}
-      {/* <Static.ErrorPage /> */}
+      <Routes>
+        <Route index element={<Static.WelcomePage />} />
+        <Route path="about" element={<Static.AboutPage />} />
+        <Route path="*" element={<Static.ErrorPage />} />
+        <Route path="signin" element={<SignInPage currentUser={currentUser} loginCallback={loginUser} />} />
+        
+        <Route element={<RequireAuth currentUser={currentUser} />}>
+          <Route path="chat/:channelName" element={<ChatPage currentUser={currentUser} />} />
+          {/* <Route path="chat" element={<ChatPage currentUser={currentUser} />} /> */}
+        </Route>
+      </Routes>
 
     </div>
   );
+}
+
+// function AppLayout(props) {
+//   return (
+//     <>
+//       <HeaderBar currentUser={props.currentUser} />
+//       <Outlet />
+//     </>
+//   )
+// }
+
+function RequireAuth(props) {
+  //...determine if user is logged in
+  if(props.currentUser.userId === null) { //if no user, say so
+    return <p>Forbidden!</p>
+  }
+  else { //otherwise, show the child route content
+    return <Outlet />
+  }
 }

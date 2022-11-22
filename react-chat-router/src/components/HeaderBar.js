@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link, NavLink } from 'react-router-dom';
+
 export function HeaderBar(props) {
   const currentUser = props.currentUser;
 
@@ -10,18 +12,18 @@ export function HeaderBar(props) {
       {/* links go here */}
       <ul className="nav nav-pills">
         <li className="nav-item">
-          <a className="nav-link" href="/">Home</a>
+          <NavLink className="nav-link" to="/">Home</NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/chat">Chat</a>
+          <NavLink className="nav-link" to="/chat">Chat</NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/about">About</a>
+          <NavLink className="nav-link" to="/about">About</NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/signin">
+          <NavLink className="nav-link" to="/signin">
             <img src={currentUser.userImg} alt={currentUser.userName + " avatar"} />
-          </a>
+          </NavLink>
         </li>
       </ul>
 
