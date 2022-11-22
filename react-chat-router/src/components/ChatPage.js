@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useParams } from 'react-router-dom';
+
 import { ChannelList } from './ChannelNav.js';
 import { ChatPane } from './ChatPane.js';
 import { ComposeForm } from './ComposeForm';
@@ -11,12 +13,16 @@ const CHANNEL_LIST = ['general', 'random', 'social', 'birbs', 'channel-5']
 export default function ChatPage(props) {
   const [chatMessages, setChatMessages] = useState(CHAT_HISTORY);
 
+  const urlParamsObj = useParams();
+  console.log(urlParamsObj);
+  const currentChannel = urlParamsObj.channelName;
+
   const channelList = [
     'general', 'random', 'dank-memes', 'channel-4', 'pet-pictures'
   ]
 
   const currentUser = props.currentUser;
-  const currentChannel = "general";
+  // const currentChannel = "general";
 
   const addMessage = (messageText) => {
     const userObj = currentUser;

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
+
 export function ChannelList(props) {
 
   const channels = props.channels;
@@ -14,7 +16,7 @@ export function ChannelList(props) {
 
     const element = (
       <div key={channelNameString}>
-        <a className={classList} href="">{channelNameString}</a>
+        <Link className={classList} to={"/chat/"+channelNameString}>{channelNameString}</Link>
       </div>
     )
     return element;
