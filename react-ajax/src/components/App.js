@@ -9,19 +9,45 @@ const EXAMPLE_DATA = [
 
 
 function App(props) {
-  const [stateData, setStateData] = useState(EXAMPLE_DATA);
+  const [stateData, setStateData] = useState([]);
   //control form
+  console.log("state data", stateData);
+
   const [queryInput, setQueryInput] = useState('');
+
+  useEffect(function() {
+    console.log("running effect hook");
+    //what code do you want to run only once 
+
+    fetch('data.json')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      //all your work
+      setStateData(data);
+    })
+  }, [])
+
 
   const handleChange = (event) => {
     setQueryInput(event.target.value);
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     //do something with form input!
 
+    const URL = "https://api.github.com/search/repositories?q="+queryInput+"&sort=stars";
+    fetch(URL)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        //all your work
+        setStateData(data.items);
+      })
   }
 
 
@@ -36,7 +62,7 @@ function App(props) {
     <div className="container">
       <header><h1>AJAX Demo</h1></header> 
 
-      <form method="GET" action="https://api.github.com/search/repositories">
+      <form method="GET" action="https://api.github.com/search/repositories" onSubmit={handleSubmit}>
         <input type="text" className="form-control mb-2" 
           name="q"
           placeholder="Search Github for..."
