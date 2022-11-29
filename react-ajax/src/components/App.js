@@ -9,9 +9,25 @@ const EXAMPLE_DATA = [
 
 
 function App(props) {
-  const [stateData, setStateData] = useState(EXAMPLE_DATA);
+  console.log("rendering app")
+  const [stateData, setStateData] = useState([]);
   //control form
   const [queryInput, setQueryInput] = useState('');
+
+  useEffect(function() {
+    console.log("doing effect");
+    //what do I want to do when the component first loads
+    const URL = 'data.json';
+
+    fetch(URL)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      setStateData(data);
+    })
+
+  }, [])
 
   const handleChange = (event) => {
     setQueryInput(event.target.value);
@@ -21,6 +37,30 @@ function App(props) {
     event.preventDefault();
 
     //do something with form input!
+
+    const URL = 'https://api.github.com/search/repositories?q='+queryInput+'&sort=stars';
+
+    console.log("about to send")
+    
+    fetch(URL)
+      .then(function(response) {
+        //what to do when promise is fulfilled / number is called
+        const jsonPromise = response.json(); //convert the body stream into json
+        
+        //still in the "what to do function"
+        return jsonPromise; //basically becomes the "updatedPromise"  
+      })
+      .then(function(data) {
+        console.log(data);
+        //have the data
+        //make sure data.items exists
+        setStateData(data.items);
+
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+    
 
   }
 
@@ -36,7 +76,7 @@ function App(props) {
     <div className="container">
       <header><h1>AJAX Demo</h1></header> 
 
-      <form method="GET" action="https://api.github.com/search/repositories">
+      <form method="GET" action="https://api.github.com/search/repositories" onSubmit={handleSubmit}>
         <input type="text" className="form-control mb-2" 
           name="q"
           placeholder="Search Github for..."
