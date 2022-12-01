@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import { getDatabase, ref, set as firebaseSet} from 'firebase/database';
+
+
 export function ChatPane(props) {
   const currentChannel = props.currentChannel;
   const chatMessages = props.chatMessages;
@@ -37,19 +40,29 @@ export function ChatPane(props) {
 }
 
 function MessageItem(props) {
-  const {userName, userImg, text} = props.messageData;
+  const {userName, userImg, text, key, liked} = props.messageData;
 
   //state
   const [isLiked, setIsLiked] = useState(false);
 
   const handleClick = (event) => {
     console.log("you liked "+userName+"'s post!");
-    setIsLiked(!isLiked); //toggle
+    // setIsLiked(!isLiked); //toggle
+
+    const db = getDatabase();
+    const likeRef = ref(db, "allMessages/"+key+"/liked"); //where is the data I care about
+
+
+    //          where       what
+    firebaseSet(likeRef, true);
+
+
+
   }
 
   //RENDERING
   let heartColor = "grey";
-  if(isLiked) {
+  if(liked) {
     heartColor = "red";
   }
 
