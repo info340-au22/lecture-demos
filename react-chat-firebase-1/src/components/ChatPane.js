@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import {getDatabase, ref, set as firebaseSet} from 'firebase/database';
+
 export function ChatPane(props) {
   const currentChannel = props.currentChannel;
   const chatMessages = props.chatMessages;
@@ -37,7 +39,7 @@ export function ChatPane(props) {
 }
 
 function MessageItem(props) {
-  const {userName, userImg, text} = props.messageData;
+  const {userName, userImg, text, key} = props.messageData;
 
   //state
   const [isLiked, setIsLiked] = useState(false);
@@ -45,6 +47,15 @@ function MessageItem(props) {
   const handleClick = (event) => {
     console.log("you liked "+userName+"'s post!");
     setIsLiked(!isLiked); //toggle
+
+
+    const db = getDatabase(); //"the database"
+    const messageRef = ref(db, "allMessages/"+key+"/liked");
+
+    firebaseSet(messageRef, true);
+
+
+
   }
 
   //RENDERING
