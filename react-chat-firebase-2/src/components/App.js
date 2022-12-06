@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import { HeaderBar } from './HeaderBar.js';
 
@@ -15,6 +16,10 @@ import DEFAULT_USERS from '../data/users.json';
 export default function App(props) {
   //state
   const [currentUser, setCurrentUser] = useState(DEFAULT_USERS[0]) //default to null user
+  const [authStateDetermined, setAuthStateDetermined] = useState(false);
+
+  console.log("rendering app with",currentUser.userId);
+
 
   const navigateTo = useNavigate(); //navigation hook
 
@@ -22,6 +27,23 @@ export default function App(props) {
   useEffect(() => {
     //log in a default user
     // loginUser(DEFAULT_USERS[1])
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, (firebaseUser) => {
+      if(firebaseUser) {
+        console.log("logged in as", firebaseUser.displayName);
+        console.log(firebaseUser);
+        firebaseUser.userId = firebaseUser.uid
+        firebaseUser.userName = firebaseUser.displayName;
+        firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png"
+
+        setCurrentUser(firebaseUser);
+      } else {
+        console.log("logged out");
+        setCurrentUser(DEFAULT_USERS[0]);
+      }
+    })
+
 
   }, []) //array is list of variables that will cause this to rerun if changed
 

@@ -3,6 +3,9 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 
+import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { StyledFirebaseAuth } from 'react-firebaseui';
+
 import DEFAULT_USERS from '../data/users.json';
 
 export default function SignInPage(props) {
@@ -16,6 +19,22 @@ export default function SignInPage(props) {
 
     loginFunction(selectedUserObj)
   }
+
+  const auth = getAuth();
+
+  const uiConfigObj = {
+    signInOptions: [ 
+      { provider: EmailAuthProvider.PROVIDER_ID, requireDisplayName: true }, 
+      { provider: GoogleAuthProvider.PROVIDER_ID }
+    ],
+    signInFlow: 'popup',
+    callbacks: {
+      signInSuccessWithAuthResult: () => false
+    },
+    credentialHelper: 'none'
+  }
+
+
 
   //convenience
   const userButtons = DEFAULT_USERS.map((userObj) => {
@@ -32,10 +51,18 @@ export default function SignInPage(props) {
     )
   })
 
+  //a bit hacky, doesn't totally
+  if(currentUser.userId) { //if I'm signed in
+    return <Navigate to="/chat/general" />
+  }
+
   return (
     <div className="card bg-light">
       <div className="container card-body">
-        <p className="lead">Pick a user:</p>
+
+        <StyledFirebaseAuth firebaseAuth={auth} uiConfig={uiConfigObj} />
+
+        {/* <p className="lead">Pick a user:</p>
         <Dropdown>
           <Dropdown.Toggle variant="light">
             <img src={currentUser.userImg} alt={currentUser.userName + " avatar"} />
@@ -43,7 +70,7 @@ export default function SignInPage(props) {
           <Dropdown.Menu>
             {userButtons}
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown> */}
       </div>
     </div>
   )
