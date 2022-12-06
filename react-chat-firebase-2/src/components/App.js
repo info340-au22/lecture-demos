@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
 
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 import { HeaderBar } from './HeaderBar.js';
 
 import ChatPage from './ChatPage';
@@ -15,6 +17,7 @@ import DEFAULT_USERS from '../data/users.json';
 export default function App(props) {
   //state
   const [currentUser, setCurrentUser] = useState(DEFAULT_USERS[0]) //default to null user
+  console.log("rendering app, user is", currentUser.displayName);
 
   const navigateTo = useNavigate(); //navigation hook
 
@@ -22,6 +25,24 @@ export default function App(props) {
   useEffect(() => {
     //log in a default user
     // loginUser(DEFAULT_USERS[1])
+
+    const auth = getAuth();
+    //                 authenticator, a callback
+    onAuthStateChanged(auth, (firebaseUser) => {
+      if(firebaseUser) {
+        console.log("signing in as", firebaseUser.displayName)
+        console.log(firebaseUser);
+        firebaseUser.userId = firebaseUser.uid;
+        firebaseUser.userName = firebaseUser.displayName;
+        firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png";
+        setCurrentUser(firebaseUser);
+      }
+      else { //no user
+        console.log("signed out");
+        setCurrentUser(DEFAULT_USERS[0]); //change the null user
+      }
+    })
+
 
   }, []) //array is list of variables that will cause this to rerun if changed
 

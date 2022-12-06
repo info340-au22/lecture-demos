@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { updateProfile} from 'firebase/auth';
+import { getDatabase, ref as dbRef, set as firebaseSet } from 'firebase/database';
+
 export default function ProfilePage(props) {
   //convenience
+  const currentUser = props.currentUser;
   const displayName = props.currentUser.userName;
 
   const [imageFile, setImageFile] = useState(undefined)
@@ -13,12 +18,30 @@ export default function ProfilePage(props) {
     if(event.target.files.length > 0 && event.target.files[0]) {
       const imageFile = event.target.files[0]
       setImageFile(imageFile);
+      //console.log(URL.createObjectURL(imageFile));
       setImageUrl(URL.createObjectURL(imageFile));
     }
   }
 
-  const handleImageUpload = (event) => {
+  const handleImageUpload = async (event) => {
     console.log("Uploading", imageFile);
+   
+    const storage = getStorage();
+    const imageRef = ref(storage, "userImages/"+currentUser.userId+".png");
+    await uploadBytes(imageRef, imageFile)
+    const downloadUrlString = await getDownloadURL(imageRef);
+    console.log(downloadUrlString);
+
+    //put in user profile
+    await updateProfile(currentUser, { photoURL: downloadUrlString} );
+
+    //also put in database (for fun)
+    const db = getDatabase();
+    const refString = "userData/"+currentUser.userId+"/imgUrl";
+    console.log(refString);
+    const userImgRef = dbRef(db, "userData/"+currentUser.userId+"/imgUrl")
+    firebaseSet(userImgRef, downloadUrlString);
+
   }
 
   return (
